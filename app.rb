@@ -49,4 +49,10 @@ get("/:from_currency/:to_currency") do
   api_url = "#{base_URL}convert?access_key=#{exchange_rate_API}&from=#{@original_currency}&to=#{@destination_currency}&amount=1"
   
   # some more code to parse the URL and render a view template
+  raw_data = HTTP.get(api_url)
+  raw_data_string = raw_data.to_s
+  parsed_data = JSON.parse(raw_data_string)
+  @result = parsed_data["result"]
+
+  erb(:from_to_currency)
 end
