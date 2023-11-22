@@ -1,0 +1,8 @@
+<h1>Currency pairs</h1>
+<ul>
+  <% @symbols.each{|s| %>
+  <li>
+    <a href="/<%= s[0] %>">convert 1 <%= s[0] %> to...</a>
+  </li>
+  <%} %>
+</ul>
