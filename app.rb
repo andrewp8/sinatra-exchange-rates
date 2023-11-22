@@ -30,10 +30,13 @@ end
 
 get("/:from_currency") do
   @original_currency = params.fetch("from_currency")
-
-  api_url = "https://api.exchangerate.host/list?access_key=#{ENV["EXCHANGE_RATE_KEY"]}"
   
+  api_url = "#{base_URL}live?access_key=#{exchange_rate_API}&source=#{@original_currency}"
+
   # some more code to parse the URL and render a view template
+  @raw_data = HTTP.get(api_url)
+
+  erb(:from_currency)
 end
 
 get("/:from_currency/:to_currency") do
