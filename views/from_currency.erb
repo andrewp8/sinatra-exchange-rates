@@ -2,5 +2,10 @@
 
 <p>Go <a href="/">back</a>.</p>
 
-<%= @raw_data %>
-
+<ul>
+  <% @to_symbols.each{|s| %>
+  <li>
+    <a href="/<%= @original_currency %>/<%= s[0].gsub(@original_currency,"") %>">Convert 1 <%= @original_currency %> to <%= s[0].gsub(@original_currency,"") %></a>
+  </li>
+  <%} %>
+</ul>
